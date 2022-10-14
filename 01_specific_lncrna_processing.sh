@@ -7,19 +7,6 @@ do
   sed -i "1iID\tSum\tCount\tMax\tMean" specific_lncrna2/${name}_lncRNA_SC_expression_2017_genes.txt1 
 done
 
-## no express
-#tail -n +2 Female_Oogenesis_lncRNA_SC_expression_2017.txt | awk '{for(i=2; i<=NF; i++) a[$1]+=$i}END{for(j in a) {if(a[j]==0) print j"\t"a[j]}}' > tmp/Female_Oogenesis_lncRNA_SC_expression_2017_no_genes.txt1
-
-#tail -n +2 Female_Oogenesis_lncRNA_SC_expression_2017.txt | awk '{for(i=2; i<=NF; i++) {a[$1]+=$i;if($i>0){b[$1]++};if($i>c[$1]){c[$1]=$i}}}END{for(j in a) {if(b[j]<2 && c[j]<3) print j"\t"a[j]"\t"b[j]"\t"c[j]}}' > tmp/Female_Oogenesis_lncRNA_SC_expression_2017_genes.txt1
-
-#for i in *_lncRNA_SC_expression_2017.txt
-#do
-#  name=${i%_lncRNA_SC_expression_2017.txt}
-#  tail -n +2 $i | awk '{for(i=2; i<=NF; i++) {a[$1]+=$i;if($i>0){b[$1]++}}}END{for(j in a) if(a[j]<3 && b[j]>0) print j"\t"a[j]"\t"b[j]; else if (a[j]==0) print j"\t"a[j]"\t"0;}' >specific_lncrna2/tmp/${name}_lncRNA_SC_expression_2017_no_genes.txt1
-#  tail -n +2 $i | awk '{for(i=2; i<=NF; i++) {a[$1]+=$i;if($i>0){b[$1]++}}}END{for(j in a) {if(b[j]<2 && a[j]>=3) print j"\t"a[j]"\t"b[j]}}' > specific_lncrna2/tmp/${name}_lncRNA_SC_expression_2017_no_genes.txt2
-#done
-
-
 ### other cell type lncrna exclusion
 for i in *_lncRNA_SC_expression_2017.txt
 do
